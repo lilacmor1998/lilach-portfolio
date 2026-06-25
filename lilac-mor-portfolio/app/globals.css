@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f1efe9;
+  --ink: #101010;
+  --lilac: #f19ac0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--lilac);
+  color: var(--ink);
+}
+
+a,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.display {
+  font-size: clamp(4rem, 10vw, 10.8rem);
+  font-weight: 900;
+  letter-spacing: -0.085em;
+  line-height: 0.79;
+}
+
+.section-title {
+  font-size: clamp(3rem, 7vw, 7.5rem);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 0.86;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px currentColor;
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.hero-orb {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.85), transparent 12%),
+    radial-gradient(circle at 30% 30%, #ffc6df 0, #f18fbc 42%, #be5d92 72%, #6c2f54 100%);
+  box-shadow: inset -25px -26px 44px rgba(92, 25, 61, .35), 0 28px 80px rgba(241, 154, 192, .26);
+}
+
+.project-card::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(120deg, rgba(255,255,255,.11), transparent 34%, transparent 68%, rgba(255,255,255,.08));
+}
+
+.project-card img {
+  object-position: center;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee {
+    animation: none;
+  }
+}
